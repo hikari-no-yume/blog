@@ -6,8 +6,9 @@ require_once '../vendor/autoload.php';
 
 use ColinODell\CommonMark\CommonMarkConverter;
 
-$path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/';
+$path = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
 $path = ltrim($path, '/');
+$path = urldecode($path);
 
 header('Content-Type: text/html;charset=utf-8');
 
