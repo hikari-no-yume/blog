@@ -9,7 +9,7 @@
     <h2>Post list</h2>
     <ul>
         <?php foreach($files as $file): ?>
-            <li><a href="/<?=htmlspecialchars($file)?>"><?=htmlspecialchars($file)?></a></li>
+            <li><a href="/<?=htmlspecialchars($file["url"])?>"><?=htmlspecialchars($file["title"])?></a></li>
         <?php endforeach; ?>
     </ul>
 </main>

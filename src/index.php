@@ -14,10 +14,18 @@ header('Content-Type: text/html;charset=utf-8');
 
 if ($path === '' || $path === '/') {
     $files = glob('../posts/*.post.md');
-    $files = array_map(function ($file) {
-        return basename($file, ".post.md");
-    }, $files);
     rsort($files);
+    $files = array_map(function ($file) {
+        $postName = basename($file, ".post.md");
+        $fp = fopen($file, "r");
+        $firstLine = fgets($fp);
+        fclose($fp);
+        $firstLine = rtrim(ltrim($firstLine, '#='),'='); // strip Markdown title
+        return [
+            "title" => $firstLine,
+            "url" => $postName
+        ];
+    }, $files);
 
     require_once "../templates/home.php";
     return;
