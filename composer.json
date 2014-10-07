@@ -1,0 +1,10 @@
+{
+    "require": {
+        "colinodell/commonmark-php": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ajf\\blog\\": "src"
+        }
+    }
+}

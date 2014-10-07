@@ -1,0 +1,31 @@
+/* sane box model */
+* {
+    -webkit-box-sizing: border-box; /* Android â‰¤ 2.3, iOS â‰¤ 4 */
+       -moz-box-sizing: border-box; /* Firefox 1+ */
+            box-sizing: border-box; /* Chrome, IE 8+, Opera, Safari 5.1 */
+}
+
+body {
+    font-family: Georgia, serif;
+    padding: 0;
+    margin: 0;
+    background: url(noise.png);
+}
+
+h1 {
+    font-weight: normal;
+}
+
+main {
+    max-width: 800px;
+    padding: 5px;
+    margin: auto;
+}
+
+a {
+    color: #666;
+}
+
+footer {
+    color: #aaa;
+}

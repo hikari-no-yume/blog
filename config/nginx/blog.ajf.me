@@ -1,0 +1,24 @@
+server {
+    listen 80;
+    server_name blog.ajf.me;
+
+    access_log  /var/log/nginx/blog.ajf.me.access.log;
+
+    root        /var/www/blog.ajf.me;
+
+    location / {
+        index       index.html;
+        error_page  404 = @rewrite;
+    }
+
+    location @rewrite {
+        rewrite  .*  /index.php;
+    }
+    
+    location ~ \.php$ {
+        fastcgi_pass   unix:/var/run/php5-fpm.sock;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
