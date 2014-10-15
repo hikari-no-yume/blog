@@ -5,7 +5,7 @@
 
 <main>
     <h1>Blog</h1>
-    <?php if (file_exists("../blog_description.php")) { require_once "../blog_description.php"; } ?>
+    <?php if ($blogDescription !== NULL) { echo $blogDescription; } ?>
     <h2>Post list</h2>
     <ul>
         <?php foreach($files as $file): ?>

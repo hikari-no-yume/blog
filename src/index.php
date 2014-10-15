@@ -27,6 +27,14 @@ if ($path === '' || $path === '/') {
         ];
     }, $files);
 
+    if (file_exists('../posts/blog-description.md')) {
+        $blogDescription = file_get_contents("../posts/blog-description.md");
+        $converter = new CommonMarkConverter();
+        $blogDescription = $converter->convertToHtml($blogDescription);
+    } else {
+        $blogDescription = NULL;
+    }
+
     require_once "../templates/home.php";
     return;
 } else {
