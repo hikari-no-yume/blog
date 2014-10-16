@@ -11,10 +11,6 @@ server {
         error_page  404 = @rewrite;
     }
 
-    location /media/ {
-        root        /var/www/blog/ajf.me;
-    }
-
     location @rewrite {
         rewrite  .*  /index.php;
     }
