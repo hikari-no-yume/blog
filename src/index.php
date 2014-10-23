@@ -8,6 +8,8 @@ use ColinODell\CommonMark\CommonMarkConverter;
 
 $path = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
 $path = ltrim($path, '/');
+// ignore query string
+list($path, ) = explode('?', $path, 2);
 $path = urldecode($path);
 
 header('Content-Type: text/html;charset=utf-8');
