@@ -25,8 +25,8 @@ function postTitle($file, $isFilename = FALSE) {
         }
     }
 
-    // strip markdown title formatting
-    $postTitle = rtrim(ltrim($postTitle, '#='), '=');
+    // strip markdown title formatting, newlines
+    $postTitle = rtrim(ltrim($postTitle, '#='), "=\n\r");
 
     return $postTitle;
 }
