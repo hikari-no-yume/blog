@@ -1,6 +1,6 @@
 <!doctype html>
 <meta charset=utf-8>
-<title><?=htmlspecialchars($postName)?></title>
+<title><?=htmlspecialchars($postTitle)?></title>
 <link rel=stylesheet href=style.css>
 
 <main>
