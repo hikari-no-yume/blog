@@ -6,9 +6,11 @@
 }
 
 body {
-    font-family: Georgia, serif;
+    font: 13pt Georgia, serif;
+    color: #111;
     padding: 0;
     margin: 0;
+    line-height: 1.7;
     background: url(noise.png);
 }
 
@@ -17,7 +19,7 @@ h1 {
 }
 
 main {
-    max-width: 800px;
+    max-width: 750px;
     padding: 5px;
     margin: auto;
 }
