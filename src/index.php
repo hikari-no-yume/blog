@@ -37,12 +37,21 @@ if ($path === '' || $path === '/') {
     $files = glob('../posts/*.post.md');
     rsort($files);
     $files = array_map(function ($file) {
-        $postName = basename($file, ".post.md");
-        $postTitle = postTitle($file, TRUE);
-        return [
-            "title" => $postTitle,
-            "url" => $postName
-        ];
+        $fields = [];
+        $fields['url'] = basename($file, ".post.md");
+        $fields['title'] = postTitle($file, TRUE);
+        if (preg_match('/^((\d\d\d\d)-(\d\d)-\d\d)-/', $fields['url'], $matches)) {
+            $fields['date'] = $matches[1]; // whole YYYY-MM-DD date
+            $fields['year'] = $matches[2]; // YYYY
+            $month = (int)$matches[3]; // MM
+            $fields['season'] = [
+                3   => '🌱',     4   => '🌱',     5   => '🌱',
+                6   => '☀️',     7   => '☀️',     8   => '☀️',
+                9   => '🍁',     10  => '🍁',     11  => '🍁',
+                12  => '🎄',     1   => '❄️',     2   => '❄️',
+            ][$month];
+        }
+        return $fields;
     }, $files);
 
     if (file_exists('../posts/blog-description.md')) {
