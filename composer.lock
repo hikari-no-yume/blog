@@ -1,39 +1,58 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6736793eda8ecf50087f7df532e8de09",
+    "hash": "ca0b971fadad66463527c16ef49ce559",
+    "content-hash": "0826e4c4cf16557a3e8f950c18624547",
     "packages": [
         {
-            "name": "colinodell/commonmark-php",
-            "version": "0.1.2",
+            "name": "league/commonmark",
+            "version": "0.14.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/colinodell/commonmark-php.git",
-                "reference": "d1b296681790a3ec8e9ccf0bf7b0014784309cd5"
+                "url": "https://github.com/thephpleague/commonmark.git",
+                "reference": "b73c0b7288bd0e6f9f56bd0b20d0657214b91838"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/colinodell/commonmark-php/zipball/d1b296681790a3ec8e9ccf0bf7b0014784309cd5",
-                "reference": "d1b296681790a3ec8e9ccf0bf7b0014784309cd5",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/b73c0b7288bd0e6f9f56bd0b20d0657214b91838",
+                "reference": "b73c0b7288bd0e6f9f56bd0b20d0657214b91838",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "ext-mbstring": "*",
+                "php": ">=5.4.8"
+            },
+            "replace": {
+                "colinodell/commonmark-php": "*"
             },
             "require-dev": {
+                "cebe/markdown": "~1.0",
                 "erusev/parsedown": "~1.0",
-                "jgm/stmd": "dev-master#2cf0750",
+                "jgm/commonmark": "0.25",
                 "michelf/php-markdown": "~1.4",
-                "phpunit/phpunit": "~4.2.5"
+                "mikehaertl/php-shellcommand": "~1.2.0",
+                "phpunit/phpunit": "~4.3|~5.0",
+                "scrutinizer/ocular": "~1.1",
+                "symfony/finder": "~2.3|~3.0"
             },
+            "suggest": {
+                "league/commonmark-extras": "Library of useful extensions including smart punctuation"
+            },
+            "bin": [
+                "bin/commonmark"
+            ],
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.15-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "ColinODell\\CommonMark\\": "src/",
-                    "ColinODell\\CommonMark\\Tests\\": "tests/"
+                    "League\\CommonMark\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -44,18 +63,18 @@
                 {
                     "name": "Colin O'Dell",
                     "email": "colinodell@gmail.com",
-                    "homepage": "http://www.colinodell.com",
+                    "homepage": "https://www.colinodell.com",
                     "role": "Lead Developer"
                 }
             ],
             "description": "Markdown parser for PHP based on the CommonMark spec",
-            "homepage": "https://github.com/colinodell/commonmark-php",
+            "homepage": "https://github.com/thephpleague/commonmark",
             "keywords": [
                 "commonmark",
                 "markdown",
                 "parser"
             ],
-            "time": "2014-09-28 12:54:49"
+            "time": "2016-07-02 18:48:39"
         }
     ],
     "packages-dev": [],
@@ -63,6 +82,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }

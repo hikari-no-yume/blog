@@ -1,6 +1,6 @@
 {
     "require": {
-        "colinodell/commonmark-php": "*"
+        "league/commonmark": "^0.14"
     },
     "autoload": {
         "psr-4": {

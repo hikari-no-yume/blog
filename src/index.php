@@ -4,7 +4,7 @@ namespace ajf\blog;
 
 require_once '../vendor/autoload.php';
 
-use ColinODell\CommonMark\CommonMarkConverter;
+use League\CommonMark\CommonMarkConverter;
 
 $path = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/';
 $path = ltrim($path, '/');
