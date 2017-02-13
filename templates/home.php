@@ -5,7 +5,7 @@
 
 <main>
     <h1>Blog</h1>
-    <?php if ($blogDescription !== NULL) { echo $blogDescription; } ?>
+    <?=$blogDescription ?? ""?>
     <h2>Post list</h2>
     <ul>
         <?php foreach ($posts as $post): ?>
