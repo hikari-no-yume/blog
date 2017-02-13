@@ -8,16 +8,16 @@
     <?php if ($blogDescription !== NULL) { echo $blogDescription; } ?>
     <h2>Post list</h2>
     <ul>
-        <?php foreach ($files as $file): ?>
+        <?php foreach ($posts as $post): ?>
             <li>
-                <?php if (isset($file['date'])): ?>
-                    <time datetime="<?=$file['date']?>">
-                        <?=$file['season']?>
-                        <?=$file['year']?>
+                <?php if (isset($post['date'])): ?>
+                    <time datetime="<?=$post['date']?>">
+                        <?=$post['season']?>
+                        <?=$post['year']?>
                     </time>
                     -
                 <?php endif; ?>
-                <a href="/<?=htmlspecialchars($file["url"])?>"><?=htmlspecialchars($file["title"])?></a>
+                <a href="/<?=htmlspecialchars($post["url"])?>"><?=htmlspecialchars($post["title"])?></a>
             </li>
         <?php endforeach; ?>
     </ul>

@@ -1,14 +1,30 @@
-What's this?
-============
+blog
+====
 
-A really, really minimal blogging software written in PHP. It's flat-file, just markdown files.
+A minimal blog static site generator written in PHP.
 
-How do I set it up?
-===================
+Setup
+-----
 
-1. Check out the repo somewhere on your server. 
-2. Run `composer install`.
-3. Optionally, create `posts/blog-description.md`, it'll be put on the front page of your blog.
-4. Create some posts in `posts`. They'll be listed descending lexicographically, so name them with the ISO 8601 `YYYY-MM-DD` date prefixed (though you don't *have* to). All post files must end in `.post.md`.
-5. Point a web server at `src`, making it serve the static files (`style.css` and `noise.png`), and falling back to the `index.php` script when there's no file with the right name. You can use the nginx configuration in `config/nginx/blog.ajf.me` as a guideline.
-6. If you want to have images and stuff, stick them in `media`. There's a symlink of it in `src`, so if your web server is pointed there (as it's supposed to be), doing `![](/media/some-image.jpg)` in your posts will work.
+`composer install` will install the dependencies.
+
+Directory layout
+----------------
+
+Create a `posts/` directory and fill it with `.post.md` files. I suggest naming them with the `YYYY-MM-DD-post-name` format, so they sort correctly. The first line will be used as the title.
+
+If you want a description for the front page, create `posts/blog-description.md`.
+
+Media files can be placed in a `media/` directory and referenced likewise in the Markdown (e.g. `![](/media/image.png)`).
+
+Generating a site
+-----------------
+
+`make` will populate `out/` with the generated site.
+
+`make clean` will clear it.
+
+Hosting a site
+--------------
+
+For clean URLs, this software assumes that 1) the site is hosted on the web root and 2) `.html` extensions on posts will be hidden. See `config/nginx/blog.ajf.me` for an example of how to do that..

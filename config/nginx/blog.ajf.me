@@ -19,15 +19,15 @@ server {
     root        /var/www/blog.ajf.me;
 
     location / {
-        index       index.php;
-        error_page  404 = @rewrite;
+        index       index.html;
+        try_files   $uri $uri/ @htmlext;
     }
 
-    location @rewrite {
-        rewrite  .*  /index.php;
+    location ~ \.html$ {
+        try_files $uri =404;
     }
-    
-    location ~ \.php$ {
-        include fastcgi_php_passthru;
+
+    location @htmlext {
+        rewrite ^(.*)$ $1.html last;
     }
 }
