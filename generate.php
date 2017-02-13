@@ -6,33 +6,22 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use League\CommonMark\CommonMarkConverter;
 
-function postTitle($file, $isFilename = FALSE) {
-    if ($isFilename) {
-        $fp = fopen($file, "r");
-        $postTitle = fgets($fp);
-        fclose($fp);
-    } else {
-        if (($pos = strpos($file, "\n")) !== FALSE) {
-            $postTitle = substr($file, 0, $pos);
-        } else {
-            $postTitle = $file;
-        }
-    }
-
-    // strip markdown title formatting, newlines
-    $postTitle = rtrim(ltrim($postTitle, '#='), "=\n\r");
-
-    return $postTitle;
-}
-
 $posts = [];
 $files = glob('posts/*.post.md');
 rsort($files);
 $posts = array_map(function ($file) {
     $fields = [];
     $fields['url'] = basename($file, ".post.md");
-    $fields['title'] = postTitle($file, TRUE);
     $fields['content'] = file_get_contents($file);
+
+    if (($pos = strpos($fields['content'], "\n")) !== FALSE) {
+        $fields['title'] = substr($fields['content'], 0, $pos);
+    } else {
+        $fields['title'] = $fields['url'];
+    }
+    // strip markdown title formatting, newlines
+    $fields['title'] = rtrim(ltrim($fields['title'], '#='), "=\n\r");
+
     if (preg_match('/^((\d\d\d\d)-(\d\d)-\d\d)-/', $fields['url'], $matches)) {
         $fields['date'] = $matches[1]; // whole YYYY-MM-DD date
         $fields['year'] = $matches[2]; // YYYY
