@@ -6,6 +6,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use League\CommonMark\CommonMarkConverter;
 
+$config = require __DIR__ . '/config/blog/config.php';
 $posts = [];
 $files = glob('posts/*.post.md');
 rsort($files);

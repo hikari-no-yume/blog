@@ -10,25 +10,9 @@
          <a href=/>← Home</a><br>
 
          <?=$postContent?>
-    </main>
-    <script src="script.js"></script>
-
-    <script type="application/javascript">
-        (function() {
-            if (config.disqus) {
-                _parent = document.getElementById("main");
-                _disqus_div = document.createElement("div");
-                _disqus_div.id = "disqus_thread";
-                _parent.appendChild(_disqus_div);
-
-                var d = document, s = d.createElement('script');
-                    
-                s.src = disqus.disqus_url;
-                
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            }
-        })();
-    </script>
+    </main>    
+    <?php
+    require "disqus.php";
+    ?>
 </body>
 </html>
