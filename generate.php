@@ -6,6 +6,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use League\CommonMark\CommonMarkConverter;
 
+$config = require __DIR__ . '/config/blog/config.php';
 $posts = [];
 $files = glob('posts/*.post.md');
 rsort($files);
@@ -14,7 +15,7 @@ $posts = array_map(function ($file) {
     $fields['url'] = basename($file, ".post.md");
     $fields['content'] = file_get_contents($file);
 
-    if (($pos = strpos($fields['content'], "\n")) !== FALSE) {
+    if (($pos = strpos($fields['content'], "\n")) !== false) {
         $fields['title'] = substr($fields['content'], 0, $pos);
     } else {
         $fields['title'] = $fields['url'];
@@ -41,7 +42,7 @@ if (file_exists('posts/blog-description.md')) {
     $converter = new CommonMarkConverter();
     $blogDescription = $converter->convertToHtml($blogDescription);
 } else {
-    $blogDescription = NULL;
+    $blogDescription = null;
 }
 
 ob_start();
@@ -50,6 +51,7 @@ file_put_contents("out/index.html", ob_get_clean());
 
 foreach ($posts as $post) {
     $postTitle = $post["title"];
+    $postUrl        = $post["url"];
     $converter = new CommonMarkConverter();
     $postContent = $converter->convertToHtml($post["content"]);
 
